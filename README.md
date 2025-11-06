@@ -282,3 +282,4 @@ MIT License - Feel free to use in your projects!
 ---
 
 **Built with ❤️ using Spring Boot and Google Gemini AI**
+# Build and run instructions added to README
