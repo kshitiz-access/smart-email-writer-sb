@@ -149,108 +149,6 @@ curl -X POST http://localhost:8080/api/email/test
 ./mvnw test
 ```
 
-## 🔧 Configuration
-
-### application.properties
-```properties
-# Server Configuration
-server.port=${PORT:8080}
-
-# Environment
-app.environment=${APP_ENV:development}
-app.frontend.url=${FRONTEND_URL:http://localhost:5173}
-
-# Gemini API
-gemini.api.url=${GEMINI_URL:https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=}
-gemini.api.key=${GEMINI_KEY}
-```
-
-### Environment Variables
-- `GEMINI_KEY` - **Required** - Your Google Gemini API key
-- `PORT` - Server port (default: 8080)
-- `APP_ENV` - Environment (development/production)
-- `FRONTEND_URL` - Frontend URL for CORS (default: http://localhost:5173)
-
-## 🚀 Deployment
-
-### Railway
-1. Connect GitHub repository
-2. Set environment variable: `GEMINI_KEY=your-key`
-3. Deploy automatically
-
-### Render
-1. Connect GitHub repository  
-2. Build command: `./mvnw clean package`
-3. Start command: `java -jar target/*.jar`
-4. Environment variable: `GEMINI_KEY=your-key`
-
-### Docker
-```dockerfile
-FROM openjdk:17-jdk-slim
-COPY target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app.jar"]
-```
-
-## 🔒 Security
-
-- ✅ API keys stored as environment variables
-- ✅ CORS configured for specific origins
-- ✅ No sensitive data in logs
-- ✅ Input validation and sanitization
-- ✅ Error handling without data exposure
-
-## 🎯 Features
-
-### Smart Context Detection
-- **Urgency Detection** - Identifies time-sensitive requests
-- **Tone Analysis** - Recognizes gratitude, apologies, scheduling needs
-- **Automatic Tone Selection** - Chooses appropriate response style
-
-### AI Optimization
-- **Prompt Engineering** - Optimized prompts for professional responses
-- **Response Filtering** - Removes signatures, greetings, subject lines
-- **Length Control** - Keeps responses concise (under 150 words)
-- **Error Handling** - Graceful fallbacks for API failures
-
-### Integration Ready
-- **CORS Enabled** - Works with web apps and browser extensions
-- **RESTful API** - Standard HTTP methods and status codes
-- **JSON Responses** - Easy integration with frontend frameworks
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Port 8080 already in use:**
-```bash
-# Kill existing process
-pkill -f spring-boot:run
-# Or use different port
-PORT=8081 ./mvnw spring-boot:run
-```
-
-**API Key not found:**
-```bash
-# Verify environment variable
-echo $GEMINI_KEY
-# Or check .env file exists
-cat .env
-```
-
-**Compilation errors:**
-```bash
-# Clean and rebuild
-./mvnw clean compile
-# Check Java version
-java -version
-```
-
-**Gemini API errors:**
-- Verify API key is valid
-- Check internet connection
-- Ensure API quota is available
-
 ## 📁 Project Structure
 
 ```
@@ -274,10 +172,6 @@ src/main/resources/
 3. Commit changes: `git commit -m 'Add feature'`
 4. Push to branch: `git push origin feature-name`
 5. Submit pull request
-
-## 📄 License
-
-MIT License - Feel free to use in your projects!
 
 ---
 
